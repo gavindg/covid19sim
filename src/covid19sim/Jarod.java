@@ -22,13 +22,14 @@ public class Jarod {
 		writeFile();
 		output();
 		spread();
+		output();
 	}
 	public static void input() {
-		System.out.println("Enter numer of people: ");
+		System.out.println("Enter number of people: ");
 		n = scnr.nextInt();
 		while (Math.pow((int) Math.sqrt(n), 2) != n) {
 			System.out.println("Error value must be an integer perfect square.");
-			System.out.println("Enter numer of people: ");
+			System.out.println("Enter number of people: ");
 			n = scnr.nextInt();
 			}
 		
@@ -55,6 +56,7 @@ public class Jarod {
 			BufferedWriter bw = new BufferedWriter(fw);
 			test++;
 			int infected = randomInt(n);
+			System.out.println("RANDOM: "+infected);
 			
 			for (int i = 1; i <= n; i++) {
 				if (i % (Math.sqrt(n)) != 0 && i != infected) {
@@ -119,6 +121,44 @@ public class Jarod {
 			FileWriter fw = new FileWriter(filepath,true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			
+			int i = 0;
+			int num;
+			while (sc.hasNext()) {
+				i++;
+				if (inf-(Math.sqrt(n)) == i) {
+					System.out.println("HI");
+					if (i % (Math.sqrt(n)) != 0) {
+						bw.write(1+"\t");
+					} else {
+						bw.write(1+"\n");
+					}
+				}
+				if (inf+(Math.sqrt(n)) == i) {
+					System.out.println("HI");
+					if (i % (Math.sqrt(n)) != 0) {
+						bw.write(1+"\t");
+					} else {
+						bw.write(1+"\n");
+					}
+						
+				}
+				if (--inf == i) {
+					System.out.println("HI");
+					if (i % (Math.sqrt(n)) != 0) {
+						bw.write(1+"\t");
+					} else {
+						bw.write(1+"\n");
+					}
+				}
+				if (++inf== i) {
+					System.out.println("HI");
+					if (i % (Math.sqrt(n)) != 0) {
+						bw.write(1+"\t");
+					} else {
+						bw.write(1+"\n");
+						}
+					}
+				}
 				
 			bw.flush();
 			bw.close();
@@ -129,9 +169,9 @@ public class Jarod {
 		
 	}
 
-public static int randomInt(int up) {
+	public static int randomInt(int up) {
 		Random rand = new Random();
-		int num = 1+rand.nextInt(up);
+		int num = 1+rand.nextInt(up-1);
 		return num;
 	}
 }
