@@ -8,7 +8,7 @@ import java.io.*;
 public class Jarod {
 	
 	static Scanner scnr = new Scanner(System.in);
-	static String filepath = "covid.txt";
+	static String filepath = "covid0.txt";
 	static int status;
 	static int numPeople;
 	static int test;
@@ -23,7 +23,6 @@ public class Jarod {
 		writeFile();
 		output();
 		spread();
-//		test();
 	}
 	
 	public static void input() {
@@ -89,9 +88,10 @@ public class Jarod {
 			
 		} catch (Exception E) {
 			System.out.println("ERROR");
-		}
-		
+		}	
 	}
+	
+	
 	public static void output() {
 		try {
 			FileReader fr = new FileReader(filepath);
@@ -103,10 +103,72 @@ public class Jarod {
 		} catch (Exception E) {
 			System.out.println("ERROR");
 		}
-			
 	}
+	
+	// runs the simulation at timeStep `step`
+	public static void runSimulation(int step) 
+	{
+		String current = "covid" + step + ".txt";
+		String previous = "covid" + (step - 1) + ".txt";
+		
+		try 
+		{	
+			FileWriter currentFW = new FileWriter(current, true);
+			BufferedWriter currentBW = new BufferedWriter(currentFW);
+			
+			for (int i = 0; i < numPeople; i++) 
+			{
+				/* check at position i. if infected, continue. else ... */
+				
+				/* check at position i - 1. if infected, 
+				 * run `getTrueFalse` to see if position i gets infected*/
+				
+				/* check at position i + 1. if infected, 
+				 * run `getTrueFalse` to see if position i gets infected*/
+				
+				/* check at position i - sqrt(numPeople). if infected, 
+				 * run `getTrueFalse` to see if position i gets infected*/
+				
+				/* check at position i + sqrt(numPeople). if infected,
+				 * run `getTrueFalse` to see if position i gets infected. */
+			}
+		}
+		catch (Exception E) 
+		{
+			System.out.println("ERROR");
+		}
+	}
+	
+	/* checks the position @ pos of file @ directory `fileName` 
+	 * return values:
+	 * 0 = susceptible
+	 * 1 = infected
+	 * 2 = recovered
+	 * -1 = error ...
+	 * */
+	public static int checkPosition(int pos, String fileName) 
+	{
+		try 
+		{
+			Scanner sc = new Scanner(new File(fileName));
+			int status = -1;
+			
+			for (int i = 0; i <= pos; i++)
+			{
+				status = sc.nextInt();
+			}
+			
+			return status;
+		}
+		catch (Exception E) 
+		{
+			return -1;
+		}
+	}
+	
 	public static void spread() {
 		try {
+			
 			Scanner sc = new Scanner(new File(filepath));
 			int i = 0;
 			int num;
@@ -140,7 +202,7 @@ public class Jarod {
 		}
 	}
 
-public static int randomInt(int up) {
+	public static int randomInt(int up) {
 		Random rand = new Random();
 		int num = 1+rand.nextInt(up - 1);
 		return num;
@@ -160,11 +222,4 @@ public static int randomInt(int up) {
 			return false;
 		}
 	}
-	
-//	public static void test() 
-//	{
-//		System.out.println("Coin flip: " + getTrueFalse(.5) + " " +  getTrueFalse(.5) + " " + getTrueFalse(.5));
-//		System.out.println("99% chance: " + getTrueFalse(.99) + " " + getTrueFalse(.99) + " " + getTrueFalse(.99));
-//		System.out.println("1% chance: " +  getTrueFalse(.01) + " " + getTrueFalse(.01) + " " + getTrueFalse(.01));
-//	}
 }
