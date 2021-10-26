@@ -1,3 +1,77 @@
+if (counter % num == 1) { //if individual is in the first column
+							if (counter == 1) { //and if individual is in the top left corner
+								//look at right and bottom
+								if(checkNeighbor(counter, num, 'R', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'B', prevFile)) {
+									infectedNeighbor++; }
+							}
+							else if (counter == (numOfIndividuals - num)) { //and if individual is in the bottom left corner
+								//look at top and right
+								if(checkNeighbor(counter, num, 'T', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'R', prevFile)) {
+									infectedNeighbor++; }
+							}
+							else { //1st column boundary individuals
+								//look at top, right, and bottom
+								if(checkNeighbor(counter, num, 'T', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'R', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'B', prevFile)) {
+									infectedNeighbor++; }
+							}
+						}
+						
+						else if (counter % num == 0) { //if individual is in the last column
+							if (counter == num) { //and if individual is in the top right corner
+								//look at left and bottom
+								if(checkNeighbor(counter, num, 'L', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'B', prevFile)) {
+									infectedNeighbor++; }
+							}
+							
+							else if (counter == numOfIndividuals) { //and if individual is in the bottom right corner
+								//look at top and left
+								if(checkNeighbor(counter, num, 'T', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'L', prevFile)) {
+									infectedNeighbor++; }
+							}
+							
+							else {
+								//look at top, left, and bottom
+								if(checkNeighbor(counter, num, 'T', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'L', prevFile)) {
+									infectedNeighbor++; }
+								if(checkNeighbor(counter, num, 'B', prevFile)) {
+									infectedNeighbor++; }
+							}
+						}
+						
+						else if (counter < num) { //boundary individuals in the top row
+							//look at left, bottom, and right
+							if(checkNeighbor(counter, num, 'L', prevFile)) {
+								infectedNeighbor++; }
+							if(checkNeighbor(counter, num, 'B', prevFile)) {
+								infectedNeighbor++; }
+							if(checkNeighbor(counter, num, 'R', prevFile)) {
+								infectedNeighbor++; }
+						}
+						
+						else if ((counter > (numOfIndividuals - num)) && (counter < numOfIndividuals)) { //boundary individuals in the last row
+							//look at left, top, and right
+							if(checkNeighbor(counter, num, 'L', prevFile)) {
+								infectedNeighbor++; }
+							if(checkNeighbor(counter, num, 'T', prevFile)) {
+								infectedNeighbor++; }
+							if(checkNeighbor(counter, num, 'R', prevFile)) {
+								infectedNeighbor++; }
+						}
+
 package covid19sim;
 
 import java.util.Scanner;

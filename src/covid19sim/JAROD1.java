@@ -1,5 +1,59 @@
 
-	public static void spread() {
+	infectedNeighbor = check(counter, num, prevFile);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public static void spread() {
 		try {
 			Scanner sc = new Scanner(new File(filepath));
 			int i = 0;
