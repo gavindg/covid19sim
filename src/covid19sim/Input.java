@@ -2,16 +2,21 @@ package covid19sim;
 
 import java.util.Scanner;
 
-public class input {
+// The Input Class takes in all the inputs
+// and then returns them back to the
+// Controller class.
+
+public class Input {
 	// intializes variables
 	static int n;
 	static int step;
 	static double a;
 	static double b;
-	static Scanner scnr = controller.scnr;
+	static Scanner scnr = Controller.scnr;
 	
 	public static void validate() {
 		// Determines if the number of people is a perfect square.
+		System.out.println("*caution larger numbers take much longer*");
 		System.out.println("Enter number of people: ");
 		n = scnr.nextInt();
 		while (Math.pow((int) Math.sqrt(n), 2) != n) {
@@ -38,11 +43,16 @@ public class input {
 		//Asks for number of steps.
 		System.out.println("Enter number of steps: ");
 		step = scnr.nextInt();
+		while (step <= 0) {
+			System.out.println("Error value must be greater then 0.");
+			System.out.println("Enter number of steps: ");
+			step = scnr.nextInt();
+			}
 		// Returns the variables to controller file.
-		controller.n = n;
-		controller.a = a;
-		controller.b = b;
-		controller.step = step;
+		Controller.n = n;
+		Controller.a = a;
+		Controller.b = b;
+		Controller.step = step;
 		
 	}
 }
