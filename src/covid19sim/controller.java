@@ -6,15 +6,17 @@ import java.io.*;
 
 public class controller {
 	public static Scanner scnr = new Scanner(System.in);
-	public static String filepath = "covid.txt";
+	
+	public static String filepath = "EpidemicData";
 	public static int status;
 	public static int n;
-	public static int test;
+	public static int step;
 	public static double a; 
 	public static double b;
 	
 	public static void main(String[] args) {
 		
 		input.validate();
+		write.writeFile();
 	}
 }

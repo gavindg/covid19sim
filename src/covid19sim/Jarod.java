@@ -174,4 +174,5 @@ public class Jarod {
 		int num = 1+rand.nextInt(up-1);
 		return num;
 	}
+	
 }
