@@ -17,6 +17,10 @@ public class controller {
 	public static void main(String[] args) {
 		
 		input.validate();
-		write.writeFile();
+		write.clearFiles();
+		write.generateFiles();
+		write.firstFile();
+		write.simulation(step, n, a, b);
+		output.output(step);
 	}
 }

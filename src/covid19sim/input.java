@@ -37,7 +37,7 @@ public class input {
 			}
 		//Asks for number of steps.
 		System.out.println("Enter number of steps: ");
-		n = scnr.nextInt();
+		step = scnr.nextInt();
 		// Returns the variables to controller file.
 		controller.n = n;
 		controller.a = a;

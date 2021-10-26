@@ -10,6 +10,9 @@ public class output {
 		try {
 			FileReader fr = new FileReader(filepath+step+".txt");
 			BufferedReader br = new BufferedReader(fr);
+			System.out.println("Test #"+step);
+			System.out.println("------------------------");
+			
 			String s;
 			while((s = br.readLine()) != null) {
 				System.out.println(s);
