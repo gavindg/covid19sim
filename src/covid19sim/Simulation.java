@@ -34,20 +34,20 @@ public class Simulation {
 			FileWriter fw = new FileWriter(filepath+"1.txt",true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			int infected = Probability.randomInt(n);
-			System.out.println(infected+" is infected.");
+			System.out.println("Chracter #"+infected+" has been randomly is infected.");
 			for (int i = 1; i <= n; i++) {
 				if (i % (Math.sqrt(n)) != 0 && i != infected) {
-					bw.write(0+"\t");
+					bw.write("s\t");
 				} else {
 					if (i == infected)
 					{
 						if (i % (Math.sqrt(n)) != 0 ) {
-							bw.write(1+"\t");
+							bw.write("i\t");
 						}else {
-							bw.write(1+"\n");	
+							bw.write("i\n");	
 						}
 					}else {
-						bw.write(0+"\n");	
+						bw.write("s\n");	
 					}
 				}
 			}
@@ -62,20 +62,20 @@ public class Simulation {
 	}
 	
 	public static int check(int pos, int sqr, String fileName) {
-		int status = 0;
+		char status;
 		int infNum = 0;
 		try {
 		File file = new File(fileName);
 		Scanner inputFile = new Scanner(file);
 			for(int i=1;i<=sqr*sqr;i++) {
-				status = inputFile.nextInt();
-				if (i == pos-sqr && status == 1)
+				status = inputFile.next().charAt(0);
+				if (i == pos-sqr && status == 'i')
 					++infNum;
-				if (i == pos+sqr && status == 1)
+				if (i == pos+sqr && status == 'i')
 					++infNum;
-				if (i == pos-1 && status == 1 && pos%sqr!=1)
+				if (i == pos-1 && status == 'i' && pos%sqr!=1)
 					++infNum;
-				if (i == pos+1 && status == 1 && pos%sqr!=0)
+				if (i == pos+1 && status == 'i' && pos%sqr!=0)
 					++infNum;
 			}
 		
@@ -96,40 +96,41 @@ public class Simulation {
 				String prevFile = filepath + p + ".txt";
 				File previousFile = new File(prevFile);
 				Scanner inputFile = new Scanner(previousFile);
-				PrintWriter pw = new PrintWriter(file);
-				while(inputFile.hasNextInt()) {
+				FileWriter fw = new FileWriter(file);
+				BufferedWriter bw = new BufferedWriter(fw);
+				while(inputFile.hasNext()) {
 					int infectedNeighbor = 0;
-					int i = inputFile.nextInt();
-					if (i == 0) //if individual is susceptible
+					char i = inputFile.next().charAt(0);
+					if (i == 's') //if individual is susceptible
 					{
 						infectedNeighbor = check(counter, num, prevFile);
 						double prob = infectedNeighbor * infectionRate;
 						
 						if (Probability.getTrueFalse(prob)){
-							pw.print(1 + "\t");
+							bw.write("i\t");
 						}
 						else {
-							pw.print(0 + "\t");
+							bw.write("s\t");
 						}
 					}
-					else if (i == 1) { //if individual is infected
+					else if (i == 'i') { //if individual is infected
 						if (Probability.getTrueFalse(recoveryRate)) {
-							pw.print(2 + "\t");
+							bw.write("r\t");
 						}
 						else {
-							pw.print(1 + "\t");
+							bw.write("i\t");
 						}
-					}else if (i==2) {
-						pw.print(2 + "\t");
+					}else if (i=='r') {
+						bw.write("r\t");
 					}
 						
 						
 					if (counter % num == 0)
-						pw.println();
+						bw.write("\n");
 					counter++;
 				}
 				counter = 1;
-				pw.close();
+				bw.close();
 				inputFile.close();
 			}	
 			catch (IOException ioe) {
