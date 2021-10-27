@@ -12,7 +12,7 @@ public class Simulation {
 	//Calls variables from Controller Class
 	public static String filepath = Controller.filepath;
 	public static int step = Controller.step;
-	public static int n = Controller.n;
+	public static int n = Controller.population;
 	
 	public static void clearFiles() {
         int counter = 1;

@@ -49,9 +49,9 @@ public class Input {
 			step = scnr.nextInt();
 			}
 		// Returns the variables to controller file.
-		Controller.n = n;
-		Controller.a = a;
-		Controller.b = b;
+		Controller.population = n;
+		Controller.infRate = a;
+		Controller.recRate = b;
 		Controller.step = step;
 		
 	}
