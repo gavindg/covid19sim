@@ -25,6 +25,7 @@ public class Controller {
 		Simulation.firstFile();
 		Simulation.simulate(step, population, infRate, recRate);
 		Output.output(step);
+		Output.scan(step);
 		Output.log();
 	}
 }

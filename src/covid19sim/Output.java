@@ -29,8 +29,39 @@ public class Output {
 		} catch (Exception E) {
 			System.out.println("ERROR");
 		}
-			
 	}
+	
+	public static void scan(int step) {
+		try {
+			File inputFile = new File(filepath+step+".txt");
+			Scanner scanFile = new Scanner(inputFile);
+			char x;
+			int inf = 0;
+			int rec = 0;
+			int sus = 0;
+			while (scanFile.hasNext()) {
+				x = scanFile.next().charAt(0);
+				if (x == 's')
+					sus++;
+				if (x == 'r')
+					rec++;
+				if (x == 'i')
+					inf++;
+			}
+			System.out.printf("Infected: %d Recovered: %d Susceptible: %d %n", inf, rec, sus);
+			System.out.println("Ratio of Infected to Population: "+((double)inf)/((double)Controller.population));
+			if (inf == Controller.population)
+				System.out.println("The whole population is Infected.");
+			if (sus == Controller.population)
+				System.out.println("The whole population is Susceptiable.");
+			if (rec == Controller.population)
+				System.out.println("The whole population is Recovered.");
+			scanFile.close();
+		} catch (Exception E) {
+			
+		}
+	}
+	
 	
 	public static void log() {
 		System.out.println("There are "+Controller.step+" steps avalible.");
