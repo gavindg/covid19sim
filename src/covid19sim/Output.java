@@ -73,6 +73,7 @@ public class Output {
 			logNum = scnr.nextInt();
 			}
 		Output.output(logNum);
+		Output.scan(logNum);
 		Output.log();
 	}
 	
