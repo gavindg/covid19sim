@@ -16,11 +16,11 @@ public class Input {
 	
 	public static void validate() {
 		// Determines if the number of people is a perfect square.
-		System.out.println("*caution larger numbers take much longer*");
+		System.out.println("*Caution numbers greater then 10000 take much longer to generate.");
 		System.out.println("Enter number of people: ");
 		n = scnr.nextInt();
 		while (Math.pow((int) Math.sqrt(n), 2) != n) {
-			System.out.println("Error value must be an integer perfect square.");
+			System.out.println("Error value must be an integer and perfect square.");
 			System.out.println("Enter number of people: ");
 			n = scnr.nextInt();
 			}
@@ -28,7 +28,7 @@ public class Input {
 		System.out.println("Enter Infection Rate: ");
 		a = scnr.nextDouble();
 		while (a < 0 || a > 1) {
-			System.out.println("Error value must be an a value between 0 and 1.");
+			System.out.println("Error value must be a value between 0 and 1.");
 			System.out.println("Enter Infection Rate: ");
 			a = scnr.nextDouble();
 			}
@@ -36,7 +36,7 @@ public class Input {
 		System.out.println("Enter Recovery Rate: ");
 		b = scnr.nextDouble();
 		while (b < 0 || b > 1) {
-			System.out.println("Error value must be an a value between 0 and 1.");
+			System.out.println("Error value must be a value between 0 and 1.");
 			System.out.println("Enter Recovery Rate: ");
 			b = scnr.nextDouble();
 			}

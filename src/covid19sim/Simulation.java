@@ -34,7 +34,7 @@ public class Simulation {
 			FileWriter fw = new FileWriter(filepath+"1.txt",true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			int infected = Probability.randomInt(n);
-			System.out.println("Chracter #"+infected+" has been randomly is infected.");
+			System.out.println("Character #"+infected+" has been randomly infected.");
 			for (int i = 1; i <= n; i++) {
 				if (i % (Math.sqrt(n)) != 0 && i != infected) {
 					bw.write("s\t");

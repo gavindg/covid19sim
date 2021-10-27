@@ -53,7 +53,7 @@ public class Output {
 			if (inf == Controller.population)
 				System.out.println("The whole population is Infected.");
 			if (sus == Controller.population)
-				System.out.println("The whole population is Susceptiable.");
+				System.out.println("The whole population is Susceptible.");
 			if (rec == Controller.population)
 				System.out.println("The whole population is Recovered.");
 			scanFile.close();
@@ -69,7 +69,7 @@ public class Output {
 		int logNum = scnr.nextInt();
 		while (logNum > Controller.step || logNum <= 0) {
 			System.out.println("Error value must be between 1 and "+ Controller.step +".");
-			System.out.println("Enter test# you would like to see: ");
+			System.out.println("Enter step# you would like to see: ");
 			logNum = scnr.nextInt();
 			}
 		Output.output(logNum);
