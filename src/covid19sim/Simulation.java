@@ -14,6 +14,8 @@ public class Simulation {
 	public static int step = Controller.step;
 	public static int n = Controller.population;
 	
+	/* This function is used to clear any files from a previous simulation that may be left over.
+	 * It is called by `Controller.java` just before the simulation begins. */
 	public static void clearFiles() {
         int counter = 1;
         File dataFile;
@@ -29,6 +31,8 @@ public class Simulation {
         }
     }
 	
+	/* This function generates the initial board of tiles.  It will also output the initial board 
+	 * to the console by calling `output()` from `Output.java`. */
 	public static void firstFile() {
 		try {
 			FileWriter fw = new FileWriter(filepath+"1.txt",true);
@@ -61,6 +65,8 @@ public class Simulation {
 		}
 	}
 	
+	/* This function scans through the file `fileName` and checks all of the neighboring tiles to
+	 * position `pos` to see if they are infected. It returns the number of adjacent infected tiles. */
 	public static int check(int pos, int sqr, String fileName) {
 		char status;
 		int infNum = 0;
@@ -87,21 +93,28 @@ public class Simulation {
 		return infNum;
 	}
 	
+	/* This function controls the main flow of the simulation. It will finish after generating
+	 * `timeStepCount` number of files (including the initial file). */
 	public static void simulate(int timeStepCount, int numOfIndividuals, double infectionRate, double recoveryRate) {
 		int num = (int)Math.sqrt(numOfIndividuals);
 		int counter = 1;
+		
+		// main loop
 		for (int p = 1; p < timeStepCount; p++) {
 			try {
+				// initializing file I/O
 				File file = new File(filepath + (p + 1) + ".txt");
 				String prevFile = filepath + p + ".txt";
 				File previousFile = new File(prevFile);
 				Scanner inputFile = new Scanner(previousFile);
 				FileWriter fw = new FileWriter(file);
 				BufferedWriter bw = new BufferedWriter(fw);
+				
+				// this loop iterates through the previous file and generate the next.
 				while(inputFile.hasNext()) {
 					int infectedNeighbor = 0;
 					char i = inputFile.next().charAt(0);
-					if (i == 's') //if individual is susceptible
+					if (i == 's') //if individual is susceptible, test if they are infected
 					{
 						infectedNeighbor = check(counter, num, prevFile);
 						double prob = infectedNeighbor * infectionRate;
@@ -113,18 +126,18 @@ public class Simulation {
 							bw.write("s\t");
 						}
 					}
-					else if (i == 'i') { //if individual is infected
+					else if (i == 'i') { // if individual is infected, test if they recover
 						if (Probability.getTrueFalse(recoveryRate)) {
 							bw.write("r\t");
 						}
 						else {
 							bw.write("i\t");
 						}
-					}else if (i=='r') {
+					}else if (i=='r') { // if the individual is recovered, nothing happens
 						bw.write("r\t");
 					}
-						
-						
+					
+					// writes a newline at the end of a row
 					if (counter % num == 0)
 						bw.write("\n");
 					counter++;

@@ -13,6 +13,7 @@ public class Output {
 	public static String filepath = Controller.filepath;
 	static Scanner scnr = Controller.scnr;
 	
+	// This function outputs the result of the simulation at time step `timeStep`.
 	public static void output(int step) {
 		try {
 			FileReader fr = new FileReader(filepath+step+".txt");
@@ -31,6 +32,9 @@ public class Output {
 		}
 	}
 	
+	/* This function scans the file generated of the given time step `step` and prints information 
+	 * about it to the console, such as the ratio of infected people and whether the whole of the 
+	 * population ended as one status. */
 	public static void scan(int step) {
 		try {
 			File inputFile = new File(filepath+step+".txt");
@@ -62,7 +66,8 @@ public class Output {
 		}
 	}
 	
-	
+	/* This function allows the user to have any step in the simulation printed to the console.
+	 * It is called by `Controller.java` after the simulation is finished. */
 	public static void log() {
 		System.out.println("There are "+Controller.step+" steps avalible.");
 		System.out.println("Enter step# you would like to see: ");
@@ -77,6 +82,7 @@ public class Output {
 		Output.log();
 	}
 	
+	// This function outputs the intro credits of the program.
 	public static void intro() {
 		System.out.println("••••••••••••••••••••••••••••••••••••••••••••");
 		System.out.println("•	Team Number 9 Presents		   •");

@@ -17,6 +17,9 @@ public class Controller {
 	public static double infRate; 
 	public static double recRate;
 	
+	/* The main function controls the overall flow of the program. It begins with some input validation,
+	 * initial file generation and garbage removal of previous files, and then runs the simulation.
+	 * Afterwards, it gives the user options to view the results of the simulation. */
 	public static void main(String[] args) {
 		
 		Output.intro();

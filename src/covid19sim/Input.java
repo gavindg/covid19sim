@@ -7,13 +7,17 @@ import java.util.Scanner;
 // Controller class.
 
 public class Input {
-	// intializes variables
-	static int n;
-	static int step;
-	static double a;
-	static double b;
+	
+	// initializes variables
+	static int n; // number of tiles (must be perfect square)
+	static int step; // number of time steps to be simulated
+	static double a; // infection rate
+	static double b; // recovery rate
 	static Scanner scnr = Controller.scnr;
 	
+	
+	/* This function takes input for the parameters of the simulation and confirms that they
+	 * are valid. */
 	public static void validate() {
 		// Determines if the number of people is a perfect square.
 		System.out.println("*Caution numbers greater then 10000 take much longer to generate.");
